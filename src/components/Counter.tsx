@@ -2,7 +2,7 @@ import { useState } from "react"
 import './Counter.css'
 import styled from "@emotion/styled"
 
-const BtnDiminish = styled.button`
+export const BtnDiminish = styled.button`
   color: tomato;
   background-color: black;
   

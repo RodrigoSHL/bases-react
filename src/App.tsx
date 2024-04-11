@@ -1,10 +1,10 @@
-import Counter from "./components/Counter"
 import './App.css'
+import Users from "./components/Users"
 
  const App = () => {
    return (
     <div className={'App-header'}>
-      <Counter/>
+      <Users/>
     
     </div>
    )
