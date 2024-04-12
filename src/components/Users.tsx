@@ -1,39 +1,23 @@
-import { useState } from 'react'
+import { User, useFetchUsers } from '../hooks/UseFetchUsers';
 import { BtnDiminish } from './Counter';
 import './Users.css';
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
 
 const Users = () => {
 
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const { data, loading, fetchData } = useFetchUsers();
 
-    const fetchData = async () => {
-        try {
-            setLoading(true);
-            const response = await fetch('https://jsonplaceholder.typicode.com/users');
-            const jsonData = await response.json();
-            setData(jsonData);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     return (
         <div>
             <BtnDiminish onClick={fetchData} disabled={loading}>
                 {loading ? 'Loading...' : 'Get users'}
             </BtnDiminish>
+
             {data && (
                 <table>
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Name</th>
                             <th>Email</th>
                         </tr>
                     </thead>
