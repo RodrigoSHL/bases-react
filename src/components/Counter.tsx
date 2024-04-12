@@ -1,6 +1,7 @@
 import { useState } from "react"
 import './Counter.css'
 import styled from "@emotion/styled"
+import { handleClick } from "../helpers/handleClick"
 
 export const BtnDiminish = styled.button`
   color: tomato;
@@ -16,24 +17,19 @@ const Counter = () => {
 
   const [count, setCount] = useState(0)
 
-  const handleCount = () => {
-    setCount(count + 1)
-  }
-
-  const handleMin = () => {
-    setCount(count - 1)
-  }
-
   const handleCountReset = () => {
     setCount(0)
   }
   return (
     <div>
       <h1>Counter: {count}</h1>
-      <BtnDiminish onClick={handleCount}>+</BtnDiminish>
+      <BtnDiminish onClick={() => {
+        setCount(handleClick(count, 1))
+      }}>+</BtnDiminish>
       <button style={{ margin: '1rem', backgroundColor: 'tomato' }} onClick={handleCountReset}>Reset</button>
-      <BtnDiminish onClick={handleMin}>-</BtnDiminish>
-
+      <BtnDiminish onClick={() => {
+        setCount(handleClick(count, -1))
+      }}>-</BtnDiminish>
     </div>
 
   )
