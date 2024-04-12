@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { BtnDiminish } from './Counter';
+import './Users.css';
 interface User {
     id: number;
     name: string;
     email: string;
 }
+
 const Users = () => {
 
     const [data, setData] = useState([]);
@@ -25,14 +27,13 @@ const Users = () => {
     return (
         <div>
             <BtnDiminish onClick={fetchData} disabled={loading}>
-                {loading ? 'Loading...' : 'Get Users'}
+                {loading ? 'Loading...' : 'Get users'}
             </BtnDiminish>
             {data && (
-
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nombre</th>
                             <th>Email</th>
                         </tr>
                     </thead>
